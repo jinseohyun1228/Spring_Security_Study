@@ -48,7 +48,7 @@ public class MySecurityConfig{
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/manager/**").hasAnyRole("ADMIN","MANGER"))
                 .formLogin(formLogin -> formLogin
-						.loginPage("/login"));
+						.loginPage("/loginForm"));
 
         return http.build();
 
