@@ -1,7 +1,9 @@
 package com.jsh.securitystudy.controller;
 
+import com.jsh.securitystudy.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,8 +38,9 @@ public class IndexController {
         return "joinForm";
     }
 
-    @GetMapping("/joinProc")
-    public @ResponseBody String joinProc() {
+    @PostMapping("/join")
+    public @ResponseBody String join(User user) {
+        System.out.println("user = " + user);
         return "회원가입 완료";
     }
 
