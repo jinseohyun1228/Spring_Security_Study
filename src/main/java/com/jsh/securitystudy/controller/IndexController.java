@@ -27,8 +27,8 @@ public class IndexController {
         return "manager";
     }
     @GetMapping("/login")
-    public @ResponseBody String login() {
-        return "login";
+    public String login() {
+        return "loginForm";
     }
 
     @GetMapping("/join")
