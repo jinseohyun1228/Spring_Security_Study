@@ -1,4 +1,11 @@
 package com.jsh.securitystudy.config.auth;
+
+import com.jsh.securitystudy.model.User;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import java.util.ArrayList;
+import java.util.Collection;
+
 /*
 시큐리티가 /login 주소 요청이 오면 낚아채서 로그인을 진행시킨다.
 로그인 진행이 완료가 되면?? session을 만들어준다.
@@ -11,15 +18,6 @@ package com.jsh.securitystudy.config.auth;
 
 Security Session ->  Authentication -> UserDetails
  */
-
-
-import com.jsh.securitystudy.model.User;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.ArrayList;
-import java.util.Collection;
-
 public class PrincipalDetails implements UserDetails {
 
     private User user;

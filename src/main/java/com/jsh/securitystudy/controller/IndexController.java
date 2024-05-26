@@ -55,7 +55,7 @@ public class IndexController {
         String encPassword = passwordEncoder.encode(rawPassword);
         user.setPassword(encPassword); //이거 너무 안전하지 않은 거 아녀?
         userRepository.save(user);
-        return "redirect;/loginForm"; //이게 뭐여
+        return "redirect:loginForm"; //이게 뭐여
     }
 
 
