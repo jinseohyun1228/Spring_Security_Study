@@ -1,6 +1,9 @@
 package com.jsh.securitystudy.controller;
 
 import com.jsh.securitystudy.model.User;
+import com.jsh.securitystudy.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class IndexController {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @GetMapping({"/",""})
     public @ResponseBody String index() {
@@ -41,7 +50,12 @@ public class IndexController {
     @PostMapping("/join")
     public @ResponseBody String join(User user) {
         System.out.println("user = " + user);
-        return "회원가입 완료";
+        user.setRole("USER");
+        String rawPassword = user.getPassword();
+        String encPassword = passwordEncoder.encode(rawPassword);
+        user.setPassword(encPassword); //이거 너무 안전하지 않은 거 아녀?
+        userRepository.save(user);
+        return "redirect;/loginForm"; //이게 뭐여
     }
 
 
