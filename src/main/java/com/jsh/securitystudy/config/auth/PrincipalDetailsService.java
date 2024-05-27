@@ -30,7 +30,7 @@ public class PrincipalDetailsService implements UserDetailsService {
         System.out.println("username = " + username);
         System.out.println("userEntity = " + userEntity);
 
-        if (userEntity != null) {
+        if (userEntity != null) { //해당 유저가 존재할 때, 즉 로그인이 가능할 때
             return new PrincipalDetails(userEntity);
         }
         else {
