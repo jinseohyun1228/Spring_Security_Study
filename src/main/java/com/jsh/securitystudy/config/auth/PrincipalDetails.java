@@ -20,6 +20,7 @@ Security Session ->  Authentication -> UserDetails
  */
 public class PrincipalDetails implements UserDetails {
 
+    //여기임
     private User user;
 
     public PrincipalDetails(User user) {
