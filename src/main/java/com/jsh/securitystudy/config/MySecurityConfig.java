@@ -49,9 +49,9 @@ public class MySecurityConfig {
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/manager/**").hasAnyRole("ADMIN", "MANGER"))
                 .formLogin(formLogin -> formLogin
-                        .loginPage("/loginForm")
+                        .loginPage("/loginForm") //-> 사용자 정의 로그인 페이지
                         .loginProcessingUrl("/login") //이 주소가 호출 되면 시큐리티가 낚아채서 로그인 ㄱㄱ
-                        .defaultSuccessUrl("/")); //잘 실행되었을 떄
+                        .defaultSuccessUrl("/")); // -> 로그인 성공 후 이동 페이지
 
 
 
