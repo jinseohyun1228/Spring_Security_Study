@@ -25,3 +25,35 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
+#  profiles:
+#    include: oauth
+
+
+security:
+  oauth2:
+    client:
+      registration:
+        google:
+          client-id: 760459109498-p7r85c6qbscblul8s2uppsn0e6elp0p8.apps.googleusercontent.com
+          client-sercret: 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
+          sccope:
+            - email
+            - profile
+
+#아래부터는 무슨 블로그 글 보고 참조함;; ㅎㅎ
+#security:
+#  oauth2:
+#    client:
+#      registration:
+#        google:
+#          client-id: 760459109498-p7r85c6qbscblul8s2uppsn0e6elp0p8.apps.googleusercontent.com
+#          client-sercret: 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
+#          sccope:
+#            - email
+#            - profile
+#          redirect-uri: "http://localhost:8000/security/login/oauth2/code/goojle"
+#      provider:
+#        google:
+#          authorization-uri: https://accounts.google.com/o/oauth2/auth
+#          token-uri: https://oauth2.googleapis.com/token
+#          user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
