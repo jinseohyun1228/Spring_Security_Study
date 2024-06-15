@@ -1,10 +1,14 @@
-package com.jsh.securitystudy.config.auth;
+package com.jsh.securitystudy.config.oauth;
 
 import com.jsh.securitystudy.model.User;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 /*
 시큐리티가 /login 주소 요청이 오면 낚아채서 로그인을 진행시킨다.
@@ -18,13 +22,32 @@ import java.util.Collection;
 
 Security Session ->  Authentication -> UserDetails
  */
-public class PrincipalDetails implements UserDetails {
+@Data
+public class PrincipalDetails implements UserDetails, OAuth2User {
 
     //여기임
     private User user;
+    private Map<String, Object> attrilbutes;
 
+
+    //일반 로그인
     public PrincipalDetails(User user) {
         this.user = user;
+    }
+
+    //OAuth 로그인 사용
+    public PrincipalDetails(User user,Map<String, Object> attrilbutes ) {
+        this.user = user;
+        this.attrilbutes = attrilbutes;
+    }
+    /*
+    * 이때 어떻게 user를 전달받을까?
+    */
+
+    //OAuth2User 확장으로 인해 추가한 메서드
+    @Override
+    public Map<String, Object> getAttributes() {
+        return attrilbutes;
     }
 
     //해당 유저의 권한을 리턴하는 곳!
@@ -71,5 +94,12 @@ public class PrincipalDetails implements UserDetails {
     public boolean isEnabled() {
         //휴면 계정 사용할 때...
         return true;
+    }
+
+    //OAuth2User 확장으로 인해 추가한 메서드
+    @Override
+    public String getName() {
+        return null;
+        //중요X
     }
 }

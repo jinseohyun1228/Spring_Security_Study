@@ -1,5 +1,6 @@
 package com.jsh.securitystudy.config.auth;
 
+import com.jsh.securitystudy.config.auth.PrincipalDetails;
 import com.jsh.securitystudy.model.User;
 import com.jsh.securitystudy.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,6 @@ public class PrincipalDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User userEntity = userRepository.findByUsername(username);
-
         System.out.println("username = " + username);
         System.out.println("userEntity = " + userEntity);
 
