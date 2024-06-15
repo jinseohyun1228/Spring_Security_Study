@@ -1,4 +1,4 @@
-package com.jsh.securitystudy.config.oauth;
+package com.jsh.securitystudy.config.auth;
 
 import com.jsh.securitystudy.model.User;
 import lombok.Data;
